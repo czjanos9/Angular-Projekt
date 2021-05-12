@@ -12,6 +12,7 @@ import { SubChildRoutingComponent } from './sub-child-routing/sub-child-routing.
 /* REUQESTs */
 import { HttpClientModule } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { TankDetailsComponent } from './tank-details/tank-details.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import {MatTableModule} from '@angular/material/table';
     AppComponent,
     ChildComponent,
     ListComponent,
-    SubChildRoutingComponent
+    SubChildRoutingComponent,
+    TankDetailsComponent
   ],
     imports: [
         BrowserModule,

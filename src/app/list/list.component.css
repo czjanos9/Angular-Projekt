@@ -1,3 +1,13 @@
+.view {
+  padding: 25px;
+}
 table {
   width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+tr.mat-row:hover{
+  background: whitesmoke;
+
 }
