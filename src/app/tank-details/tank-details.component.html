@@ -69,32 +69,42 @@
             <div class="col-sm-4 bg-c-lite-green user-profile">
               <div class="card-block text-center text-white">
                 <div class="m-b-25"> <img src="{{currTank['big_icon']}}" class="img-radius" alt="Tank_ICon"> </div>
-                <h3 class="Name">{{currTank['name']}}</h3>
+              <!--  <h3 class="Name">{{currTank['name']}}  </h3> -->
               </div>
             </div>
             <div class="col-sm-8">
               <div class="card-block">
-                <h3 class="m-b-20 p-b-5 b-b-default f-w-600">{{currTank['name']}}</h3>
+                <!--<h3 class="m-b-20 p-b-5 b-b-default f-w-600">{{currTank['name']}}</h3>-->
+                <p class="m-b-10 f-w-600">Name</p>
+                <input type="text" class="m-b-20 p-b-5 b-b-default f-w-600" [(ngModel)]="currTank['name']">
                 <div class="row">
                   <div class="col-sm-6">
                     <p class="m-b-10 f-w-600">Nation</p>
-                    <h3 class="text-muted f-w-400">{{currTank['nation']}}</h3>
+                    <!--<h3 class="text-muted f-w-400">{{currTank['nation']}}</h3>-->
+                    <input type="text" class="text-muted f-w-400" [(ngModel)]="currTank['nation']">
                   </div>
                   <div class="col-sm-6">
                     <p class="m-b-10 f-w-600">Type</p>
-                    <h3 class="text-muted f-w-400">{{currTank['type']}}</h3>
+                    <!--<h3 class="text-muted f-w-400">{{currTank['type']}}</h3>-->
+                    <input type="text" class="text-muted f-w-400" [(ngModel)]="currTank['type']">
                   </div>
                 </div>
-                <h3 class="text-muted f-w-600">Tier: {{currTank['tier']}}</h3>
+                <!--<h3 class="text-muted f-w-600">Tier: {{currTank['tier']}}</h3>-->
                 <div class="row">
                   <div class="col-sm-6">
                     <p class="m-b-10 f-w-600">Hull armor</p>
                     <h3 class="text-muted f-w-400">{{currTank['armor']}}</h3>
+                    <!-- <input type="text" class="text-muted f-w-400" [(ngModel)]="currTank['armor']"> -->
                   </div>
                   <div class="col-sm-6">
                     <p class="m-b-10 f-w-600">Gun</p>
-                    <h3 class="text-muted f-w-400">{{currTank['gun_name']}}</h3>
+                    <!--<h3 class="text-muted f-w-400">{{currTank['gun_name']}}</h3>-->
+                    <input type="text" class="text-muted f-w-400" [(ngModel)]="currTank['gun_name']">
                   </div>
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <button (click)="updateCurrentVehicle()">Szerkesztés</button>
+                    </div>
                 </div>
               </div>
             </div>

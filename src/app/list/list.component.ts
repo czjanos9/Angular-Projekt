@@ -27,20 +27,12 @@ export class ListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.doRequest('https://api.worldoftanks.eu/wot/encyclopedia/vehicles/?application_id=7d8440b17a9bc5cbd0f8be1dc99a4fb6&tier=10&nation=Germany');
-    /*this.doRequest('https://api.worldoftanks.eu/wot/encyclopedia/vehicles/?application_id=7d8440b17a9bc5cbd0f8be1dc99a4fb6&nation=Germany');*/
-    /*this.doRequest('https://api.worldoftanks.eu/wot/account/info/?application_id=7d8440b17a9bc5cbd0f8be1dc99a4fb6&account_id=500706953');*/
-    /* this.http.get<any>('https://api.worldoftanks.eu/wot/account/info/?application_id=7d8440b17a9bc5cbd0f8be1dc99a4fb6&account_id=500706953').subscribe(data => {
-      console.log(data.data);
-    });*/
-
+    this.getVehiclesFromLocalStorage();
   }
 
   getRecord(row): void{
     console.log(row['tank_id']);
     this.router.navigateByUrl(`/details/${row['tank_id']}`);
-
-
   }
 
   doRequest(url): void {
@@ -48,12 +40,9 @@ export class ListComponent implements OnInit {
 
       this.listService.data = data.data;
       this.listService.dataString = JSON.stringify(data.data);
-      /*for (var i in data.data){
-        console.log(this.listService.data[i]['name']);
-      }*/
 
-      /*console.log(this.listService.data[6929]['images']['small_icon']);*/
       this.dataSource = this.createDataSource(data.data);
+      localStorage.setItem('AllVehicles', JSON.stringify(data.data));
     });
   }
   createDataSource(data): Tanks[] {
@@ -62,9 +51,16 @@ export class ListComponent implements OnInit {
     for (let i in data){
       let tank: Tanks = {tank_id: parseInt(i), name: data[i].name, small_icon: data[i].images.small_icon, type: data[i].type};
       results.push(tank);
-      /*results.push({tank_id: parseInt(i), name: data[i]['name'], small_icon: data[i]['images']['small_icon'], type: data[i]['type']});*/
     }
     return results;
+  }
+
+  getVehiclesFromDB(): void {
+    this.doRequest('https://api.worldoftanks.eu/wot/encyclopedia/vehicles/?application_id=7d8440b17a9bc5cbd0f8be1dc99a4fb6&tier=10&nation=Germany');
+  }
+
+  getVehiclesFromLocalStorage(): void {
+    this.dataSource = this.createDataSource(JSON.parse(localStorage.getItem('AllVehicles')));
   }
 
 }
