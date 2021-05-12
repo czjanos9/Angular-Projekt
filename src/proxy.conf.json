@@ -1,0 +1,9 @@
+{
+  "/api.worldoftanks.eu/*": {
+    "target": "https://api.worldoftanks.eu/wot/account/info",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true,
+    "pathRewrite": {"api.worldoftanks.eu" : ""}
+  }
+}

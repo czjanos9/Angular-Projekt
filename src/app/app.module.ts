@@ -9,6 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ListComponent } from './list/list.component';
 import { SubChildRoutingComponent } from './sub-child-routing/sub-child-routing.component';
 
+/* REUQESTs */
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,7 +24,8 @@ import { SubChildRoutingComponent } from './sub-child-routing/sub-child-routing.
         BrowserModule,
         AppRoutingModule,
         FormsModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        HttpClientModule
     ],
   providers: [],
   bootstrap: [AppComponent]
