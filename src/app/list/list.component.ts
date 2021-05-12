@@ -22,7 +22,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
 
 
 export interface Tanks {
-  tank_id: string;
+  tank_id: number;
   name: string;
   small_icon: string;
   type: string;
@@ -55,7 +55,7 @@ export class ListComponent implements OnInit {
 
   doRequest(url): void {
     this.http.get<any>(url).subscribe(data => {
-      console.log(data.data);
+
       this.listService.data = data.data;
       this.listService.dataString = JSON.stringify(data.data);
       /*for (var i in data.data){
@@ -63,17 +63,20 @@ export class ListComponent implements OnInit {
       }*/
 
       /*console.log(this.listService.data[6929]['images']['small_icon']);*/
+      this.dataSource = this.createDataSource(data.data);
     });
   }
-  /*createDataSource(): Tanks[] {
-    let results: Tanks[];
-    for (let i in this.listService.data){
-      console.log(this.listService.data[i].name);
-      results.push(i, this.listService.data[i].name, this.listService.data[i].small_icon, this.listService.data[i].type);
+  createDataSource(data): Tanks[] {
+    let results: Tanks[] = [{tank_id: 0, name: 'üres', small_icon: 'üres', type: 'üres'}];
+    results.shift();
+    console.log(results);
+    for (let i in data){
+      let tank: Tanks = {tank_id: parseInt(i), name: data[i].name, small_icon: data[i].images.small_icon, type: data[i].type};
+      results.push(tank);
+      /*results.push({tank_id: parseInt(i), name: data[i]['name'], small_icon: data[i]['images']['small_icon'], type: data[i]['type']});*/
+    }
+    return results;
   }
-  return results;
-}*/
-
 
 }
 
