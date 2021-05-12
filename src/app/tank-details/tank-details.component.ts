@@ -23,6 +23,21 @@ export interface Tank {
 export class TankDetailsComponent implements OnInit {
 
   id: string;
+  currTank: Tank = {
+    tank_id: 0,
+    nation: 'data[nation]',
+    name: 'data[name]',
+    big_icon: '',
+    type: 'data[type]',
+    tier: 'data[tier]',
+    description: 'data[description]',
+    armor: '0mm/0mm/0mm',
+    gun_name: 'data[default_profile][gun][name]'
+  };
+  //displayedColumns: string[] = ['tank_id', 'nation', 'tier', 'name', 'big_icon', 'type', 'description', 'armor', 'gun_name'];
+  displayedColumns: string[] = ['nation', 'tier', 'name', 'big_icon', 'type', 'description', 'armor', 'gun_name'];
+  dataSource;
+
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -38,12 +53,14 @@ export class TankDetailsComponent implements OnInit {
 
   doRequest(url, id): void {
     this.http.get<any>(url).subscribe(data => {
-      this.createDataSource(data.data[id]);
-
+      /*this.currTank.shift();
+      this.currTank.push(this.createDataSource(data.data[id]));
+      this.dataSource = this.currTank;*/
+      this.currTank = this.createDataSource(data.data[id]);
     });
   }
 
-  createDataSource(data): void {
+  createDataSource(data): Tank {
     let tank = {
                 tank_id: data['tank_id'],
                 nation: data['nation'],
@@ -53,10 +70,9 @@ export class TankDetailsComponent implements OnInit {
                 tier: data['tier'],
                 description: data['description'],
                 armor: `${data['default_profile']['armor']['hull']['front']}mm/${data['default_profile']['armor']['hull']['sides']}mm/${data['default_profile']['armor']['hull']['rear']}mm`,
-                gun: data['default_profile']['gun']['name']
+                gun_name: data['default_profile']['gun']['name']
     };
-    console.log(tank);
-   // return tank;
+    return tank;
   }
 
 }
