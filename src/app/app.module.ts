@@ -11,6 +11,7 @@ import { SubChildRoutingComponent } from './sub-child-routing/sub-child-routing.
 
 /* REUQESTs */
 import { HttpClientModule } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
         AppRoutingModule,
         FormsModule,
         BrowserAnimationsModule,
-        HttpClientModule
+        HttpClientModule,
+        MatTableModule
     ],
   providers: [],
   bootstrap: [AppComponent]

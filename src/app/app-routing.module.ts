@@ -7,8 +7,8 @@ import {AsdGuardGuard} from './asd-guard.guard';
 const routes: Routes = [
   {
     path: 'list',
-    component: ListComponent,
-    canActivate: [AsdGuardGuard] /*hamindegyik true val tér vissza.*/
+    component: ListComponent
+    /*canActivate: [AsdGuardGuard]*/ /*hamindegyik true val tér vissza.*/
   },
   {
     path: 'details/:id',
