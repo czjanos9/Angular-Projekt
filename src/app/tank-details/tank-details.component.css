@@ -12,6 +12,13 @@ p{
   font-size: larger;
 }
 
-.textArea {
+.pad{
+  margin: 2%;
+}
+.padding {
+  margin: 4%;
+}
+
+.btn{
 
 }

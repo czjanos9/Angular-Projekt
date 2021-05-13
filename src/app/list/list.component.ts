@@ -43,6 +43,7 @@ export class ListComponent implements OnInit {
 
       this.dataSource = this.createDataSource(data.data);
       localStorage.setItem('AllVehicles', JSON.stringify(data.data));
+      alert('Adatok lekérése sikeres!');
     });
   }
   createDataSource(data): Tanks[] {
