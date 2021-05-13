@@ -4,16 +4,25 @@ import { ListComponent } from './list/list.component';
 import {SubChildRoutingComponent} from './sub-child-routing/sub-child-routing.component';
 import {AsdGuardGuard} from './asd-guard.guard';
 import {TankDetailsComponent} from './tank-details/tank-details.component';
+import {LoginComponent} from './login/login.component';
+import {LoginGuard} from './guards/login.guard';
+
 
 const routes: Routes = [
   {
     path: 'list',
-    component: ListComponent
-    /*canActivate: [AsdGuardGuard]*/ /*hamindegyik true val tér vissza.*/
+    component: ListComponent,
+    canActivate: [LoginGuard]
   },
   {
     path: 'details/:id',
-    component: TankDetailsComponent
+    component: TankDetailsComponent,
+    canActivate: [LoginGuard]
+  },
+  {
+    path: 'login',
+    component: LoginComponent
+
   }
   /*{
     path: 'asdasdasd',

@@ -10840,7 +10840,10 @@ textarea.form-control-lg {
   margin: 10px;
 }
 .btn:hover {
-  background: whitesmoke;
+  background: lightgrey;
 }
 
+body{
+  background: whitesmoke;
+}
 /*# sourceMappingURL=bootstrap.css.map */

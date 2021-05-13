@@ -1,0 +1,17 @@
+<div class="view2">
+  <div class="card user-card-full">
+    <span class="text-muted">Username:'Pelda' , Password:'asd123'</span>
+    <div class="view">
+
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" [(ngModel)]="username">
+      </div>
+      <div class="input-group mb-3">
+        <input type="text" class="form-control" placeholder="Password" aria-label="Password" aria-describedby="basic-addon1" [(ngModel)]="password">
+      </div>
+      <div class="container">
+          <button class="btn btn-outline-secondary" type="button" (click)="doLogin()">Login</button>
+      </div>
+    </div>
+  </div>
+</div>

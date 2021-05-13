@@ -21,6 +21,9 @@ export class AppComponent {
   navigate(): void{
     this.router.navigate(['details', 'valami']);
   }
+  navigateToLogin(): void {
+    this.router.navigate(['login']);
+  }
 
   fuggvenyem(): void {
     this.valtozom = 'DFSSDFDSFDS';
