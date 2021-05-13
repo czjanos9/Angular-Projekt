@@ -1,6 +1,8 @@
 <div class="view">
-  <h2>Tier 10 German Vehicles</h2>
-  <button (click)="getVehiclesFromDB()">Load Vehicles from DB</button>
+  <div class="view">
+    <h2>Tier 10 German Vehicles</h2>
+    <button class="btn" (click)="getVehiclesFromDB()">Load Vehicles from DB</button>
+  </div>
   <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
     <!-- Position Column -->

@@ -11,3 +11,10 @@ tr.mat-row:hover{
   background: whitesmoke;
 
 }
+.btn {
+  width: 100%;
+  justify-content: center;
+}
+h2 {
+  text-align: center;
+}

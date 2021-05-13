@@ -4,6 +4,8 @@ html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 
+
+
 @charset "UTF-8";
 /*!
  * Bootstrap v5.0.0 (https://getbootstrap.com/)
@@ -10830,6 +10832,15 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+}
+
+.btn {
+  border: dimgrey solid;
+  width: 100px;
+  margin: 10px;
+}
+.btn:hover {
+  background: whitesmoke;
 }
 
 /*# sourceMappingURL=bootstrap.css.map */

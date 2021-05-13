@@ -2,3 +2,11 @@
   border: 2px solid;
   padding: 5px;
 }
+.btn {
+  border: dimgrey solid;
+  width: 100px;
+  margin: 10px;
+}
+.btn:hover {
+  background: whitesmoke;
+}
