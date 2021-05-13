@@ -96,17 +96,22 @@ export class TankDetailsComponent implements OnInit {
   updateCurrentVehicle(): void{
     localStorage.setItem('CurrentVehicle', JSON.stringify(this.currTank));
 
-    let localData: JSON = JSON.parse(localStorage.getItem('AllVehicles'));
-    localData[this.currTank['tank_id']]['name'] = this.currTank['name'];
-    localData[this.currTank['tank_id']]['nation'] = this.currTank['nation'];
-    localData[this.currTank['tank_id']]['type'] = this.currTank['type'];
-    localData[this.currTank['tank_id']]['tier'] = this.currTank['tier'];
-    localData[this.currTank['tank_id']]['description'] = this.currTank['description'];
-    localData[this.currTank['tank_id']]['default_profile']['gun']['name'] = this.currTank['gun_name'];
+    if(this.validateCurrentVehicle()) {
+      let localData: JSON = JSON.parse(localStorage.getItem('AllVehicles'));
+      localData[this.currTank['tank_id']]['name'] = this.currTank['name'];
+      localData[this.currTank['tank_id']]['nation'] = this.currTank['nation'];
+      localData[this.currTank['tank_id']]['type'] = this.currTank['type'];
+      localData[this.currTank['tank_id']]['tier'] = this.currTank['tier'];
+      localData[this.currTank['tank_id']]['description'] = this.currTank['description'];
+      localData[this.currTank['tank_id']]['default_profile']['gun']['name'] = this.currTank['gun_name'];
 
-    localStorage.setItem('AllVehicles', JSON.stringify(localData));
-    alert('Sikeres szerkesztés!');
-    return;
+      localStorage.setItem('AllVehicles', JSON.stringify(localData));
+      alert('Sikeres szerkesztés!');
+      return;
+    }
+    else {
+      alert('Nincs minden mező megfelelően kitöltve!');
+    }
   }
 
   deleteCurrentVehicle(): void {
@@ -129,30 +134,49 @@ export class TankDetailsComponent implements OnInit {
     this.allTank = JSON.parse(localStorage.getItem('AllVehicles'));
     this.id = this.currTank['tank_id'].toString();
 
+
     for(let i in this.allTank){
       if(i === this.id) {
         alert('Van ilyen azonosító!');
         return;
       }
-      let localData: JSON = JSON.parse(localStorage.getItem('AllVehicles'));
-      localData[this.id] = {
-        tank_id: this.id,
-        name: this.currTank['name'],
-        nation: this.currTank['nation'],
-        type: this.currTank['type'],
-        tier: this.currTank['tier'],
-        description: this.currTank['description'],
-        images: {small_icon: this.currTank['small_icon'],
-                 big_icon: this.currTank['big_icon']},
-        default_profile: {gun: {name: this.currTank['gun_name']},
-                          armor: {hull: {front: localData[prevId]['default_profile']['armor']['hull']['front'],
-                                        sides: localData[prevId]['default_profile']['armor']['hull']['sides'],
-                                        rear: localData[prevId]['default_profile']['armor']['hull']['rear']}}}
-      };
-      localStorage.setItem('AllVehicles', JSON.stringify(localData));
-      alert('Sikeres hozzáadás!');
-      return;
+
+      if(this.validateCurrentVehicle()){
+        let localData: JSON = JSON.parse(localStorage.getItem('AllVehicles'));
+        localData[this.id] = {
+          tank_id: this.id,
+          name: this.currTank['name'],
+          nation: this.currTank['nation'],
+          type: this.currTank['type'],
+          tier: this.currTank['tier'],
+          description: this.currTank['description'],
+          images: {small_icon: this.currTank['small_icon'],
+            big_icon: this.currTank['big_icon']},
+          default_profile: {gun: {name: this.currTank['gun_name']},
+            armor: {hull: {front: localData[prevId]['default_profile']['armor']['hull']['front'],
+                sides: localData[prevId]['default_profile']['armor']['hull']['sides'],
+                rear: localData[prevId]['default_profile']['armor']['hull']['rear']}}}
+        };
+        localStorage.setItem('AllVehicles', JSON.stringify(localData));
+        alert('Sikeres hozzáadás!');
+        return;
+      }
+      else {
+        alert('Nincs minden mező megfelelően kitöltve!');
+        return;
+      }
     }
+  }
+
+  validateCurrentVehicle(): boolean{
+    if(this.currTank['name'] === '' || this.currTank['nation'] === '' || this.currTank['type'] === '' || this.currTank['tier'] === '' ||
+      this.currTank['description'] === '' || this.currTank['gun_name'] === '')
+    {
+      console.log('validation:notok');
+      return false;
+    }
+    console.log('validation:ok');
+    return true;
   }
 
 }
