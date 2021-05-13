@@ -41,6 +41,12 @@ export class ListComponent implements OnInit {
       this.listService.data = data.data;
       this.listService.dataString = JSON.stringify(data.data);
 
+
+      if(data.error != null) {
+        alert(data.error['message']);
+        return;
+      }
+
       this.dataSource = this.createDataSource(data.data);
       localStorage.setItem('AllVehicles', JSON.stringify(data.data));
       alert('Adatok lekérése sikeres!');
